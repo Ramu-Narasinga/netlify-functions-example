@@ -2,10 +2,11 @@ const chromium = require('chrome-aws-lambda');
 
 exports.handler = async (event, context) => {
 
-    const pageToScreenshot = JSON.parse(event.body).pageToScreenshot;
+    let pageToScreenshot = JSON.parse(event.body).pageToScreenshot;
 
     pageToScreenshot = pageToScreenshot ? pageToScreenshot : "https://docsie.io";
 
+    
     if (!pageToScreenshot) return {
         statusCode: 400,
         body: JSON.stringify({ message: 'Page URL not defined' })
