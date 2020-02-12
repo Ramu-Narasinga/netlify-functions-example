@@ -2,7 +2,11 @@ const chromium = require('chrome-aws-lambda');
 
 exports.handler = async (event, context) => {
 
-    let pageToScreenshot = JSON.parse(event.body).pageToScreenshot;
+    let pageToScreenshot;
+
+    if (event && event.body) {
+        pageToScreenshot = JSON.parse(event.body).pageToScreenshot;
+    }
 
     pageToScreenshot = pageToScreenshot ? pageToScreenshot : "https://docsie.io";
 
